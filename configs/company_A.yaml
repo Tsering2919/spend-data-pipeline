@@ -1,0 +1,28 @@
+company_id: "A"
+reporting_currency: "ZAR"
+taxonomy_file: "taxonomy_A.csv"  # The pipeline will now read the tree dynamically
+files:
+  erp:
+    path: "erp_goods_receipts.csv"
+    type: "primary"
+    mappings:
+      record_id: "line_id"
+      date: "posting_date"       # New date mapping
+      po_reference: "po_number"
+      description: ["material_short_text", "service_short_text"]
+      spend_gross: null
+      spend_net: "value_zar"
+      supplier_name: "supplier_name"
+      status: null
+  invoice_tool:
+    path: "invoice_tool_export.csv"
+    type: "secondary"
+    mappings:
+      record_id: "tool_record_id"
+      date: "invoice_date"       # New date mapping
+      po_reference: "po_reference"
+      description: ["line_text"]
+      spend_gross: "gross_amount"
+      tax_rate: "vat_rate"
+      supplier_name: "supplier_name_as_captured"
+      status: "status"
