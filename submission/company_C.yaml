@@ -1,0 +1,18 @@
+company_id: "C"
+reporting_currency: "USD"
+taxonomy_file: "C/category_tree_C.csv"
+files:
+  erp:
+    path: "C/invoice_lines.csv"
+    type: "primary"
+    mappings:
+      record_id: "line_id"
+      date: "invoice_date"
+      po_reference: null
+      description: ["line_description", "product_service_description", "gl_account_description"]
+      spend_gross: null
+      spend_net: "line_amount_usd"
+      supplier_name: "supplier_name"
+      currency: null
+      currency_rate: null
+      status: "status"
